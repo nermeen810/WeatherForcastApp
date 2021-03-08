@@ -10,10 +10,13 @@ class DataSource {
         weatherDao = WeatherDataBase.getDatabase(application).weatherDao()
     }
 
-    fun getWeather(): LiveData<List<WeatherResponse>> {
+    fun getAllWeather(): LiveData<List<WeatherResponse>> {
         return weatherDao.getAll()
     }
 
+    fun getWeather(lat:String,lng:String): LiveData<WeatherResponse> {
+        return weatherDao.getWeatherResponse(lat,lng)
+    }
     suspend fun insert(weather: WeatherResponse?) {
         weather?.let { weatherDao.insert(it) }
     }

@@ -9,7 +9,7 @@ class Converter {
     fun listHourlyToJson(value: List<Hourly>?) = Gson().toJson(value)
 
     @TypeConverter
-    fun listDailyToJson(value: List<Daily>?) = Gson().toJson(value)
+    fun listDailyToJson(value: List<Daily>) = Gson().toJson(value)
 
     @TypeConverter
     fun listAlertToJson(value: List<Alerts>?) = Gson().toJson(value)
@@ -22,10 +22,10 @@ class Converter {
         Gson().fromJson(value, Array<Weather>::class.java).toList()
 
     @TypeConverter
-    fun jsonToHourlyList(value: String) = Gson().fromJson(value, Array<Hourly>::class.java).toList()
+    fun jsonToHourlyList(value: String) = Gson().fromJson(value, Array<Hourly>::class.java)?.toList()
 
     @TypeConverter
-    fun jsonToDailyList(value: String) = Gson().fromJson(value, Array<Daily>::class.java).toList()
+     fun jsonToDailyList(value: String) = Gson().fromJson(value, Array<Daily>::class.java).toList()
 
     @TypeConverter
     fun jsonToAlertList(value: String?): List<Alerts>? {

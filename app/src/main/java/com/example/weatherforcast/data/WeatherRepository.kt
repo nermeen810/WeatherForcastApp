@@ -18,14 +18,13 @@ class WeatherRepository {
         localDataSource = DataSource(application)
         remoteDataSource=NetworkService
     }
-    fun fetchData(lat:String,lon:String) :LiveData<List<WeatherResponse>>{
-
+    fun fetchData(lat:String,lon:String) :LiveData<WeatherResponse>{
 
         val exceptionHandlerException = CoroutineExceptionHandler { _, throwable -> throwable.printStackTrace()
             Log.i("id","exception")
         }
         CoroutineScope(Dispatchers.IO + exceptionHandlerException).launch {
-            val response = NetworkService.getCurrentData().getCurrentWeatherData(lat,lon)
+            val response = NetworkService.getCurrentData().getCurrentWeatherData(lat,lon,"minutely","metric","en")
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     localDataSource.insert(response.body())
@@ -34,7 +33,7 @@ class WeatherRepository {
                 }
             }
         }
-        return localDataSource.getWeather()
+        return localDataSource.getWeather(lat,lon)
     }
 
     fun getAllData(lat:String,lon:String) :LiveData<WeatherResponse>{
@@ -43,7 +42,7 @@ class WeatherRepository {
         val exceptionHandlerException = CoroutineExceptionHandler { _, _ ->
         }
         CoroutineScope(Dispatchers.IO + exceptionHandlerException).launch {
-            val response = NetworkService.getCurrentData().getCurrentWeatherData(lat,lon)
+            val response = NetworkService.getCurrentData().getCurrentWeatherData(lat,lon,"minutely","metric","en")
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     localDataSource.insert(response.body())

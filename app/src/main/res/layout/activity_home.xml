@@ -9,14 +9,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/yellow2">
+        android:background="@color/yellow">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/yellow2"
+            app:strokeColor="@color/yellow"
             app:cardCornerRadius="20dp">
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -24,13 +24,13 @@
                 android:layout_height="50dp"
                 android:background="@drawable/tab_selector"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="@color/green"
+                app:tabIndicatorColor="@color/light_purple"
                 app:tabIndicatorGravity="stretch"
                 app:tabMaxWidth="0dp"
                 app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/yellow2"
+                app:tabSelectedTextColor="@color/yellow"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                app:tabTextColor="@color/green">
+                app:tabTextColor="@color/yellow">
 
             </com.google.android.material.tabs.TabLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/currentFragment"
+        android:icon="@drawable/ic_baseline_today_24"
+        android:title="@string/Today"/>
+    <item
+        android:id="@+id/favouirateFragment"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="@string/Favorite"/>
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_baseline_settings_suggest_24"
+        android:title="@string/Settings"/>
+    <item
+        android:id="@+id/alarmFragment"
+        android:icon="@drawable/ic_baseline_access_alarm_24"
+        android:title="@string/Alarm"/>
+</menu>

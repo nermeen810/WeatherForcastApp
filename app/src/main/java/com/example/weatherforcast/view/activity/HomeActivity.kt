@@ -1,5 +1,7 @@
 package com.example.weatherforcast.view.activity
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -7,88 +9,63 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.weatherforcast.R
+import com.example.weatherforcast.databinding.ActivityHomeBinding
+import com.example.weatherforcast.databinding.ActivityWeatherDetailsBinding
 import com.example.weatherforcast.view.adapter.ViewPagerAdaptor
-import com.example.weatherforcast.view.fragment.CurrentFragment
-import com.example.weatherforcast.view.fragment.FavoriteFragment
-import com.example.weatherforcast.view.fragment.SevenDaysFragment
+import com.example.weatherforcast.view.fragment.*
 import com.example.weatherforcast.viewModel.CurrentViewModel
 import com.google.android.material.tabs.TabLayout
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var viewPager: ViewPager
-    lateinit var adaptor: ViewPagerAdaptor
-    lateinit private var tabLayout: TabLayout
+
     lateinit private var currentFragment: CurrentFragment
     lateinit  private var sevenDaysFragment: SevenDaysFragment
     lateinit  private var favoriteFragment: FavoriteFragment
-    lateinit private var fragments: MutableList<Fragment>
-    lateinit private var fragmentTitles: MutableList<String>
+    lateinit  private var settingsFragment: SettingFragment
+    lateinit private var alarmFragment: AlarmFragment
+    lateinit var binding:ActivityHomeBinding
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        supportActionBar!!.title = "Weathery"
-
-        //inflating views
-        viewPager = findViewById(R.id.viewPager)
-        tabLayout = findViewById(R.id.tabLayout)
-
-        //initializing fragments
-
-        //initializing fragments
-        currentFragment = CurrentFragment()
-        sevenDaysFragment = SevenDaysFragment()
+        currentFragment =CurrentFragment()
         favoriteFragment = FavoriteFragment()
+        settingsFragment =SettingFragment()
+        alarmFragment= AlarmFragment()
 
-        //initializing viewPager
+        makeCurrentFragment(currentFragment)
 
-        //initializing viewPager
-        tabLayout.setupWithViewPager(viewPager)
-        fragmentsinit()
-        fragmentTitlesinit()
-//        setupTabIcons();
-        //        setupTabIcons();
-        adaptor = ViewPagerAdaptor(supportFragmentManager, 0, fragments, fragmentTitles)
-        viewPager.adapter = adaptor
+         binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.currentFragment ->makeCurrentFragment(currentFragment)
+                R.id.favouirateFragment ->makeCurrentFragment(favoriteFragment)
+                R.id.settingsFragment ->makeCurrentFragment(settingsFragment)
+                R.id.alarmFragment->makeCurrentFragment(alarmFragment)
 
-        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
             }
+            true
+        }
 
-            override fun onPageSelected(position: Int) {
-                adaptor.notifyDataSetChanged()
-            }
 
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
 
-        viewPager.adapter!!.notifyDataSetChanged()
 
     }
-    private fun fragmentTitlesinit() {
-        fragmentTitles = ArrayList()
-        fragmentTitles.add("Current")
-        fragmentTitles.add("7Days")
-        fragmentTitles.add("Favorite")
-    }
 
-    private fun fragmentsinit() {
-        fragments = ArrayList()
-        fragments.add(currentFragment)
-        fragments.add(sevenDaysFragment)
-        fragments.add(favoriteFragment)
-    }
+
+    private fun makeCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment,fragment)
+            commit()
+        }
 
     override fun onResume() {
         super.onResume()
-        viewPager.adapter!!.notifyDataSetChanged()
     }
 }

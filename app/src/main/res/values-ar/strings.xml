@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">طقسى</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">الخريطه</string>
+    <string name="dialogMessage"> هل تريد حذف هذه المدينه؟ </string>
+    <string name="yesMessage">نعم</string>
+    <string name="NoMessage">لا</string>
+    <string name="lang">اللغه</string>
+    <string name="temp">وحده درجه الحراره</string>
+    <string name="WndSpeed">وحده سرعه الرياح</string>
+    <string name="arabic">اللغه العربيه</string>
+    <string name="english">اللغه الانجليزيه</string>
+    <string name="kelvin">درجه الحراره(k°)-سرعه الرياح(meter/sec)</string>
+    <string name="celsius">درجه الحراره(c°)-سرعه الرياح(meter/sec)</string>
+    <string name="fahrenheit">درجه الحراره(f°)-سرعه الرياح(miles/hour)</string>
+    <string name="mh">ميل/ساعه</string>
+    <string name="ms">متر/ثانيه</string>
+    <string name="Humidity">الرطوبه</string>
+    <string name="Pressure">الضغط</string>
+    <string name="Clouds">السحب</string>
+    <string name="WindSpeed">سرعه الرياح</string>
+    <string name="Sunrise">الشروق</string>
+    <string name="Sunset">الغروب</string>
+    <string name="dayReport">طقس ٧ ايام </string>
+    <string name="hourReport">طقس ٢٤-ساعه </string>
+    <string name="Today">اليوم</string>
+    <string name="Favorite">المفضله</string>
+    <string name="Settings">الاعدادات</string>
+    <string name="Alarm">المنبه</string>
+    <string name="notification_title">"الحدث: "</string>
+    <string name="notification_body">"احذر"</string>
+    <string name="Events">الاحداث</string>
+    <string name="save_add_btn">حفظ</string>
+    <string name="notification">اشعارات</string>
+    <string name="alarmSound">تنبيه</string>
+    <string name="soundType">نوع الصوت</string>
+    <string name="alarm">المنبه</string>
+    <string name="alarms_title">المنبه</string>
+    <string name="alarm_toolstip"> اضافه تنبيه</string>
+    <string name="description">الوصف</string>
+    <string name="dd_mm_yy">يوم/شهر/سنه</string>
+    <string name="to">من</string>
+    <string name="From">الى</string>
+    <string name="Date">التاريخ</string>
+    <string name="empty_date">لا يوجد تاريخ </string>
+    <string name="no_alarms">No Alarms</string>
+    <string name="empty_time">لا يوجد وقت </string>
+    <string name="Wea">Wea</string>
+    <string name="ery">ery</string>
+    <string name="th">th</string>
+    <string-array name="event_options">
+        <item>مطر</item>
+        <item>ثلج</item>
+        <item>ضباب</item>
+        <item>عاصفه</item>
+        <item>سحب</item>
+        <item>رياح</item>
+    </string-array>
+    <string-array name="alarm_type">
+        <item>اشعارات</item>
+        <item>تنبيه</item>
+    </string-array>
+
+</resources>

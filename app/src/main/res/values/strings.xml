@@ -1,6 +1,69 @@
 <resources>
-    <string name="app_name">weatherForcast</string>
+    <string name="app_name">Weathery</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="dialogMessage">Are you sure delete this location ? </string>
+    <string name="yesMessage">Yes</string>
+    <string name="NoMessage">No</string>
+    <string name="lang">Langauge</string>
+    <string name="temp">Temperature and Wind Speed unit</string>
+    <string name="WndSpeed">Wind Speed Unit</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="kelvin">temp(°k)-windSpeed(meter/sec)</string>
+    <string name="celsius">temp(°c)-windSpeed(meter/sec)</string>
+    <string name="fahrenheit">temp(°f)-windSpeed(miles/hour)</string>
+    <string name="mh">miles/hour</string>
+    <string name="ms">meter/sec</string>
+    <string name="Humidity">Humidity</string>
+    <string name="Pressure">Pressure</string>
+    <string name="Clouds">Clouds</string>
+    <string name="WindSpeed">Wind Speed</string>
+    <string name="Sunrise">Sunrise</string>
+    <string name="Sunset">Sunset</string>
+    <string name="dayReport">7-Day Weather Report</string>
+    <string name="hourReport">24-Hour Weather Report</string>
+    <string name="Today">Today</string>
+    <string name="Favorite">Favorite</string>
+    <string name="Settings">Settings</string>
+    <string name="Alarm">Alarm</string>
+    <string name="notification_title">"Event: "</string>
+    <string name="notification_body">\"Be aware there is \"</string>
+    <string name="Events">Events</string>
+    <string name="save_add_btn">Set Alarm</string>
+    <string name="notification">Notification</string>
+    <string name="alarmSound">Alarm</string>
+    <string name="soundType">Sound Type</string>
+    <string name="alarm">Alarm</string>
+    <string name="alarms_title">Alarms</string>
+    <string name="no_alarms">No Alarms</string>
+    <string name="alarm_toolstip">Add alarm</string>
+    <string name="description">Description</string>
+    <string name="dd_mm_yy">DD/MM/YY</string>
+    <string name="to">To</string>
+    <string name="From">From</string>
+    <string name="Date">Date</string>
+    <string name="empty_date">Empty Date</string>
+    <string name="empty_time">Empty Time</string>
+    <string name="Wea">Wea</string>
+    <string name="ery">ery</string>
+    <string name="th">th</string>
+    <string-array name="event_options">
+        <item>Rain</item>
+        <item>snow</item>
+        <item>mist/fog/haze</item>
+        <item>thunderstorm</item>
+        <item>cloud</item>
+        <item>wind</item>
+        <item>clear</item>
+    </string-array>
+
+    <string-array name="alarm_type">
+        <item>Notification</item>
+        <item>Alarm</item>
+    </string-array>
+
+
+
 </resources>

@@ -4,81 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
     android:fitsSystemWindows="true"
-    android:background="@color/light_purple">
+    android:background="@color/light_gray">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="3"
+        android:weightSum="5"
         android:orientation="vertical">
-    <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/main_temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
-                    android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:textSize="60sp"
-                    android:text="19C°"
-                    tools:text="19°C" />
-                <TextView
-                    android:id="@+id/main_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
-                    android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:text="Mostly cloudy"
-                    tools:text="Mostly cloudy" />
-                <TextView
-                    android:id="@+id/main_view_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
-                    android:text="Zagazig"
-                    tools:text="Zagazig" />
-                <TextView
-                    android:id="@+id/main_view_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:includeFontPadding="false"
-                    android:layout_marginTop="7dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:text="Fri, Nov 03, 2017"
-                    tools:text="Fri, Nov 03, 2017" />
 
-            </LinearLayout>
-    <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/main_view_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:text="Zagazig"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Zagazig" />
+
+            <TextView
+                android:id="@+id/main_view_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="Fri, Nov 03, 2017"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_view_country"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/main_view_country"
+                tools:text="Fri, Nov 03, 2017" />
+
+
+            <TextView
+                android:id="@+id/main_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:includeFontPadding="false"
+                android:text="19C°"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="@+id/main_view_country"
+                app:layout_constraintTop_toBottomOf="@+id/main_view_country"
+                tools:text="19°C" />
+
+            <TextView
+                android:id="@+id/main_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:includeFontPadding="false"
+                android:text="Mostly cloudy"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/main_temperature"
+                app:layout_constraintTop_toBottomOf="@+id/main_temperature"
+                tools:text="Mostly cloudy" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="100dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.405"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/main_temperature"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/cloudy" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:weightSum="6"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:orientation="horizontal">
-        <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,23 +113,25 @@
                     android:orientation="vertical">
                     <ImageView
                         android:id="@+id/dailyImg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
                         android:layout_gravity="center"
                         android:layout_marginTop="17dp"
-                        android:src="@drawable/ic_baseline_wb_sunny_24"
+                        android:src="@drawable/humidity"
                         />
+
                     <TextView
                         android:id="@+id/HumidityTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Humidity"
                         android:layout_gravity="center"
-                        android:padding="2dp"
-                        android:layout_marginBottom="5dp"
-                        android:textSize="9sp"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"/>
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/Humidity"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
 
                     <TextView
                         android:id="@+id/HumidityVal"
@@ -115,250 +139,298 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:layout_marginBottom="17dp"
                         android:text="75%" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="40dp"
-            android:backgroundTint="@color/light_purple">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/PressureImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    />
-                <TextView
-                    android:id="@+id/PressureTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pressure"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="40dp"
+                android:backgroundTint="@color/light_purple">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/PressureImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/gauge"
+                        />
 
-                <TextView
-                    android:id="@+id/PressureVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="17dp"
-                    android:text="75%" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/PressureTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/Pressure"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/PressureVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="17dp"
+                        android:text="75%" />
+                </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="40dp"
-            android:backgroundTint="@color/light_purple">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/CloudsImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    />
-                <TextView
-                    android:id="@+id/CloudsTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clouds"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"/>
+            </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/CloudsVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="17dp"
-                    android:text="75%" />
-            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="40dp"
+                android:backgroundTint="@color/light_purple">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/CloudsImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/clouds"
+                        />
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="40dp"
-            android:backgroundTint="@color/light_purple">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/WindSpeedImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    />
-                <TextView
-                    android:id="@+id/WindSpeedTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Wind Speed"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/CloudsTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/Clouds"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
 
-                <TextView
-                    android:id="@+id/WindSpeedVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="17dp"
-                    android:text="75%" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/CloudsVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="17dp"
+                        android:text="75%" />
+                </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="40dp"
-            android:backgroundTint="@color/light_purple">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/SunriseImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    />
-                <TextView
-                    android:id="@+id/SunriseTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunrise"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="40dp"
+                android:backgroundTint="@color/light_purple">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/WindSpeedImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/wind"
+                        />
 
-                <TextView
-                    android:id="@+id/SunriseVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="17dp"
-                    android:text="75%" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/WindSpeedTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/WindSpeed"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="40dp"
-            android:backgroundTint="@color/light_purple">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/SunsetImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    />
-                <TextView
-                    android:id="@+id/SunsetTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunset"
-                    android:layout_gravity="center"
-                    android:padding="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/WindSpeedVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="17dp"
+                        android:text="75%" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/SunsetVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="17dp"
-                    android:text="75%" />
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="40dp"
+                android:backgroundTint="@color/light_purple">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/SunriseImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/sunrise"
+                        />
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/SunriseTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/Sunrise"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/SunriseVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="17dp"
+                        android:text="75%" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="40dp"
+                android:backgroundTint="@color/light_purple">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/SunsetImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/sea"
+                        />
+
+                    <TextView
+                        android:id="@+id/SunsetTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="2dp"
+                        android:text="@string/Sunset"
+                        android:textColor="@color/white"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/SunsetVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="17dp"
+                        android:text="75%" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hourReport"
+                android:textColor="@color/white"
+                android:layout_marginStart="16dp"
+                android:textSize="15sp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/yellow"
+                android:layout_margin="3dp"
+                app:cardCornerRadius="15dp"
+                android:backgroundTint="@color/light_blue">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hourlyRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/hours_item"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dayReport"
+                android:textColor="@color/white"
+                android:layout_marginStart="16dp"
+                android:textSize="15sp" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/yellow"
                 android:layout_margin="3dp"
                 app:cardCornerRadius="5dp"
-                android:backgroundTint="@color/light_purple">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/hourlyRecycle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:backgroundTint="@color/light_blue">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dailyRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

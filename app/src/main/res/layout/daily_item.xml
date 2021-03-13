@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
     android:layout_marginLeft="3dp"
     android:layout_marginRight="3dp"
     >
@@ -13,12 +13,13 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:cardCornerRadius="7dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
             android:background="@color/light_purple">
 
             <TextView
@@ -38,19 +39,19 @@
                 android:id="@+id/imageView"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginEnd="128dp"
+                android:layout_marginEnd="192dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_wb_sunny_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.509" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tempTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="156dp"
+                android:layout_marginEnd="116dp"
                 android:layout_weight="1"
                 android:text="19°/9°"
                 android:textColor="@color/white"
@@ -58,19 +59,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.528" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/dayMonthTxt"
                 android:layout_width="56dp"
                 android:layout_height="16dp"
-                android:layout_marginStart="92dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginStart="88dp"
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/descriptionTxt"

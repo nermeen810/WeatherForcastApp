@@ -45,7 +45,7 @@ class SevenDaysFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dailyAdapter = DailyAdapter(arrayListOf())
+        dailyAdapter = DailyAdapter(arrayListOf(),requireActivity())
         initUI()
     }
     private fun initUI() {
@@ -54,15 +54,6 @@ class SevenDaysFragment : Fragment() {
             adapter = dailyAdapter
         }
     }
-    private fun dateFormat(milliSeconds: Int):String{
-        // Create a calendar object that will convert the date and time value in milliseconds to date.
-        val calendar: Calendar = Calendar.getInstance()
-        calendar.setTimeInMillis(milliSeconds.toLong() * 1000)
-        var month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-        var day=calendar.get(Calendar.DAY_OF_MONTH).toString()
-        var year=calendar.get(Calendar.YEAR).toString()
-        return day+"/"+month +"/"+year
 
-    }
 
 }

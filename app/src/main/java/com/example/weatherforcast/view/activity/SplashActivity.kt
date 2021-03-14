@@ -11,7 +11,7 @@ import com.example.weatherforcast.databinding.ActivityWeatherDetailsBinding
 
 class SplashActivity : AppCompatActivity() {
     private val SPLASH_TIME_OUT = 3000L
-    lateinit var binding:ActivitySplashBinding
+    lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)

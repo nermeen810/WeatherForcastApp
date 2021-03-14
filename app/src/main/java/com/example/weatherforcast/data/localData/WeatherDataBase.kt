@@ -9,10 +9,15 @@ import androidx.room.TypeConverters
 import com.example.weatherforcast.model.Alarm
 import com.example.weatherforcast.model.WeatherResponse
 
-@Database(entities = arrayOf(WeatherResponse::class,Alarm::class), version = 1, exportSchema = false)
+@Database(
+    entities = arrayOf(WeatherResponse::class, Alarm::class),
+    version = 1,
+    exportSchema = false
+)
 @TypeConverters(Converter::class)
 public abstract class WeatherDataBase : RoomDatabase() {
     abstract fun weatherDao(): WeatherDao
+
     companion object {
         @Volatile
         private var INSTANCE: WeatherDataBase? = null
@@ -20,7 +25,7 @@ public abstract class WeatherDataBase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
 
                 val instance = Room.databaseBuilder(
-                 application.applicationContext,
+                    application.applicationContext,
                     WeatherDataBase::class.java,
                     "weather_database"
                 ).build()

@@ -58,11 +58,11 @@ class CurrentFragment : Fragment() {
     lateinit var sharedPref: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     lateinit var hourlyAdapter: HourlyAdapter
-    lateinit var  dailyAdapter: DailyAdapter
-    lateinit var lang:String
-    lateinit var unit:String
-    lateinit var tempUnit:String
-    lateinit var windSpeedUnit:String
+    lateinit var dailyAdapter: DailyAdapter
+    lateinit var lang: String
+    lateinit var unit: String
+    lateinit var tempUnit: String
+    lateinit var windSpeedUnit: String
     private lateinit var notificationUtils: WeatherNotification
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,8 +71,8 @@ class CurrentFragment : Fragment() {
         sharedPref = requireActivity().getSharedPreferences("weather", Context.MODE_PRIVATE)
         editor = sharedPref.edit()
         firstTime()
-        lang=sharedPref.getString("lang","en").toString()
-        unit=sharedPref.getString("units","metric").toString()
+        lang = sharedPref.getString("lang", "en").toString()
+        unit = sharedPref.getString("units", "metric").toString()
         setLocale(lang)
         setUnits(unit)
         getLatestLocation()
@@ -89,8 +89,8 @@ class CurrentFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        hourlyAdapter = HourlyAdapter(arrayListOf(),requireActivity())
-        dailyAdapter = DailyAdapter(arrayListOf(),requireActivity())
+        hourlyAdapter = HourlyAdapter(arrayListOf(), requireActivity())
+        dailyAdapter = DailyAdapter(arrayListOf(), requireActivity())
 
         initUI()
         currentViewModel = ViewModelProvider(
@@ -100,7 +100,7 @@ class CurrentFragment : Fragment() {
             CurrentViewModel::class.java
         )
         currentViewModel.loadWeatherData().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if(it!=null) {
+            if (it != null) {
                 setData(it)
             }
         })
@@ -127,12 +127,13 @@ class CurrentFragment : Fragment() {
             adapter = dailyAdapter
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setData(it: WeatherResponse) {
-        editor.putString("timezone",it.timezone)
+        editor.putString("timezone", it.timezone)
         hourlyAdapter.updateHours(it.hourly)
         dailyAdapter.updateDays(it.daily)
-       // Picasso.get().load(iconLinkgetter(it.current.weather[0].icon)).into(binding.MainIcon)
+        // Picasso.get().load(iconLinkgetter(it.current.weather[0].icon)).into(binding.MainIcon)
         binding.mainDescription.text = it.current.weather[0].description
         binding.mainViewDate.text = dateFormat(it.current.dt)
         binding.SunriseVal.text = timeFormat(it.current.sunrise)
@@ -143,34 +144,34 @@ class CurrentFragment : Fragment() {
         }
         editor.putString("timezone", it.timezone)
         editor.commit()
-        if(lang.equals("en")) {
-            binding.HumidityVal.text = it.current.humidity.toString()+ "%"
-            binding.PressureVal.text = it.current.pressure.toString()+ " hPa"
-            binding.WindSpeedVal.text = it.current.wind_speed.toString()  +" "+windSpeedUnit
+        if (lang.equals("en")) {
+            binding.HumidityVal.text = it.current.humidity.toString() + "%"
+            binding.PressureVal.text = it.current.pressure.toString() + " hPa"
+            binding.WindSpeedVal.text = it.current.wind_speed.toString() + " " + windSpeedUnit
             binding.mainTemperature.text = (it.current.temp.toInt()).toString() + tempUnit
             binding.CloudsVal.text = it.current.clouds.toString()
 
-        }
-        else
-        {
+        } else {
             binding.CloudsVal.text = convertToArabic(it.current.clouds)
             binding.HumidityVal.text = convertToArabic(it.current.humidity) + "%"
-            binding.PressureVal.text = convertToArabic(it.current.pressure) +"hPa"
-            binding.WindSpeedVal.text = convertToArabic(it.current.wind_speed.toInt())+windSpeedUnit
-            binding.mainTemperature.text = convertToArabic(it.current.temp.toInt()) +tempUnit
+            binding.PressureVal.text = convertToArabic(it.current.pressure) + "hPa"
+            binding.WindSpeedVal.text =
+                convertToArabic(it.current.wind_speed.toInt()) + windSpeedUnit
+            binding.mainTemperature.text = convertToArabic(it.current.temp.toInt()) + tempUnit
 
 
         }
 
     }
+
     private fun notifyUser(alert: List<Alerts>) {
         notificationUtils = WeatherNotification(context)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val nb: NotificationCompat.Builder? = notificationUtils.getAndroidChannelNotification(
                 alert.get(0)?.event, ""
-                        +dateFormat(alert.get(0)?.start.toInt()) + "," +dateFormat(alert.get(0)?.end.toInt()) + "\n" + alert.get(
+                        + dateFormat(alert.get(0)?.start.toInt()) + "," + dateFormat(alert.get(0)?.end.toInt()) + "\n" + alert.get(
                     0
-                )?.description, true,false
+                )?.description, true, false
             )
             notificationUtils.getManager()?.notify(3, nb?.build())
         }
@@ -179,14 +180,14 @@ class CurrentFragment : Fragment() {
     private fun timeFormat(millisSeconds: Int): String {
         val calendar = Calendar.getInstance()
         calendar.setTimeInMillis((millisSeconds * 1000).toLong())
-        if(lang.equals("en")){
-        val format = SimpleDateFormat("hh:00 aaa")
-        return format.format(calendar.time)}
-        else{
+        if (lang.equals("en")) {
+            val format = SimpleDateFormat("hh:00 aaa")
+            return format.format(calendar.time)
+        } else {
             val format = SimpleDateFormat("۰۰:hh aaa")
-            return format.format(calendar.time)}
+            return format.format(calendar.time)
         }
-
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -197,33 +198,32 @@ class CurrentFragment : Fragment() {
         var month = calendar.get(Calendar.MONTH)
         var day = calendar.get(Calendar.DAY_OF_MONTH)
         var year = calendar.get(Calendar.YEAR)
-        if(lang.equals("en")) {
+        if (lang.equals("en")) {
             return day.toString() + "/" + month + "/" + year
-        }
-        else
-        {
-         return convertToArabic(day)+"/"+convertToArabic(month)+"/"+convertToArabic(year)
+        } else {
+            return convertToArabic(day) + "/" + convertToArabic(month) + "/" + convertToArabic(year)
         }
 
     }
-    fun setUnits(unit:String)
-    {
+
+    fun setUnits(unit: String) {
         when (unit) {
             "metric" -> {
-                tempUnit="°c"
-                windSpeedUnit="m/s"
+                tempUnit = "°c"
+                windSpeedUnit = "m/s"
             }
             "imperial" -> {
                 tempUnit = "°f"
-                windSpeedUnit="m/h"
+                windSpeedUnit = "m/h"
             }
-            "standard" ->{
-                tempUnit="°k"
-                windSpeedUnit="m/s"
+            "standard" -> {
+                tempUnit = "°k"
+                windSpeedUnit = "m/s"
             }
 
         }
     }
+
     fun setLocale(languageCode: String?) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
@@ -232,6 +232,7 @@ class CurrentFragment : Fragment() {
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
     }
+
     fun convertToArabic(value: Int): String? {
         return (value.toString() + "")
             .replace("1", "١").replace("2", "٢")
@@ -240,25 +241,28 @@ class CurrentFragment : Fragment() {
             .replace("7", "٧").replace("8", "٨")
             .replace("9", "٩").replace("0", "٠")
     }
-    fun convertTimezone(weatherResponse: WeatherResponse):String{
-        var arabicTimezone=""
+
+    fun convertTimezone(weatherResponse: WeatherResponse): String {
+        var arabicTimezone = ""
         var addressList: List<Address>? = null
 
-        val geocoder=Geocoder(context, Locale(lang))
+        val geocoder = Geocoder(context, Locale(lang))
         try {
-            addressList = geocoder.getFromLocation(weatherResponse.lat,weatherResponse.lon, 1)
-        }
-        catch (e:IOException)
-        {
+            addressList = geocoder.getFromLocation(weatherResponse.lat, weatherResponse.lon, 1)
+        } catch (e: IOException) {
             e.printStackTrace()
         }
-   if(addressList?.size!! >0) {
-       val address = addressList!![0]
-       arabicTimezone = address.locality + "/" + address.adminArea
-   }
+        if (addressList?.size!! > 0) {
+            val address = addressList!![0]
+           // arabicTimezone = address.locality + "/" + address.adminArea
+            arabicTimezone=address.adminArea
+        }
         return arabicTimezone
     }
-    fun iconLinkgetter(iconName:String):String="https://openweathermap.org/img/wn/"+iconName+"@2x.png"
+
+    fun iconLinkgetter(iconName: String): String =
+        "https://openweathermap.org/img/wn/" + iconName + "@2x.png"
+
     @SuppressLint("MissingPermission")
     fun getLatestLocation() {
         if (isPermissionGranted()) {
@@ -424,14 +428,14 @@ class CurrentFragment : Fragment() {
             }
             .show()
     }
-    private fun firstTime(){
-        var isFirst=sharedPref.getBoolean("isFirstTimeLaunch",true)
-        if(isFirst)
-        {
+
+    private fun firstTime() {
+        var isFirst = sharedPref.getBoolean("isFirstTimeLaunch", true)
+        if (isFirst) {
             getLatestLocation()
-            editor.putString("lang","en")
-            editor.putString("units","metric")
-            editor.putBoolean("isFirstTimeLaunch",false)
+            editor.putString("lang", "en")
+            editor.putString("units", "metric")
+            editor.putBoolean("isFirstTimeLaunch", false)
             editor.commit()
         }
     }

@@ -29,24 +29,24 @@ class WeatherDetailsActivity : AppCompatActivity() {
     lateinit var weatherDetailsViewModel: WeatherDetailsViewModel
     lateinit var binding: ActivityWeatherDetailsBinding
     lateinit var hourlyAdapter: HourlyAdapter
-    lateinit var  dailyAdapter: DailyAdapter
+    lateinit var dailyAdapter: DailyAdapter
     lateinit var sharedPref: SharedPreferences
-    lateinit var lang:String
-    lateinit var unit:String
-    lateinit var tempUnit:String
-    lateinit var windSpeedUnit:String
+    lateinit var lang: String
+    lateinit var unit: String
+    lateinit var tempUnit: String
+    lateinit var windSpeedUnit: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWeatherDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val timezone= intent.getStringExtra("timezone")
-        sharedPref =getSharedPreferences("weather", Context.MODE_PRIVATE)
-        lang=sharedPref.getString("lang","en").toString()
-        unit=sharedPref.getString("units","metric").toString()
+        val timezone = intent.getStringExtra("timezone")
+        sharedPref = getSharedPreferences("weather", Context.MODE_PRIVATE)
+        lang = sharedPref.getString("lang", "en").toString()
+        unit = sharedPref.getString("units", "metric").toString()
         setUnits(unit)
-        hourlyAdapter = HourlyAdapter(arrayListOf(),this)
-        dailyAdapter = DailyAdapter(arrayListOf(),this)
+        hourlyAdapter = HourlyAdapter(arrayListOf(), this)
+        dailyAdapter = DailyAdapter(arrayListOf(), this)
         initUI()
 
         weatherDetailsViewModel = ViewModelProvider(
@@ -55,7 +55,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
         ).get(
             WeatherDetailsViewModel::class.java
         )
-         weatherDetailsViewModel.loadWeatherData(timezone).observe(this, {
+        weatherDetailsViewModel.loadWeatherData(timezone).observe(this, {
             it?.let {
                 setData(it)
             }
@@ -76,27 +76,26 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private fun setData(it: WeatherResponse) {
         hourlyAdapter.updateHours(it.hourly)
         dailyAdapter.updateDays(it.daily)
-       // Picasso.get().load(iconLinkgetter(it.current.weather[0].icon)).into(binding.MainIcon)
+        // Picasso.get().load(iconLinkgetter(it.current.weather[0].icon)).into(binding.MainIcon)
         binding.mainDescription.text = it.current.weather[0].description
         binding.mainViewDate.text = dateFormat(it.current.dt)
         binding.SunriseVal.text = timeFormat(it.current.sunrise)
         binding.SunsetVal.text = timeFormat(it.current.sunset)
         binding.mainViewCountry.text = convertTimezone(it)
-        if(lang.equals("en")) {
-            binding.HumidityVal.text = it.current.humidity.toString()+ "%"
-            binding.PressureVal.text = it.current.pressure.toString()+ "hPa"
+        if (lang.equals("en")) {
+            binding.HumidityVal.text = it.current.humidity.toString() + "%"
+            binding.PressureVal.text = it.current.pressure.toString() + "hPa"
             binding.WindSpeedVal.text = it.current.wind_speed.toString() + windSpeedUnit
             binding.mainTemperature.text = (it.current.temp.toInt()).toString() + tempUnit
             binding.CloudsVal.text = it.current.clouds.toString()
 
-        }
-        else
-        {
+        } else {
             binding.CloudsVal.text = convertToArabic(it.current.clouds)
             binding.HumidityVal.text = convertToArabic(it.current.humidity) + "%"
-            binding.PressureVal.text = convertToArabic(it.current.pressure) +"hPa"
-            binding.WindSpeedVal.text = convertToArabic(it.current.wind_speed.toInt())+windSpeedUnit
-            binding.mainTemperature.text = convertToArabic(it.current.temp.toInt()) +tempUnit
+            binding.PressureVal.text = convertToArabic(it.current.pressure) + "hPa"
+            binding.WindSpeedVal.text =
+                convertToArabic(it.current.wind_speed.toInt()) + windSpeedUnit
+            binding.mainTemperature.text = convertToArabic(it.current.temp.toInt()) + tempUnit
 
 
         }
@@ -107,8 +106,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
         val calendar = Calendar.getInstance()
         calendar.setTimeInMillis((millisSeconds * 1000).toLong())
 
-            val format = SimpleDateFormat("hh:mm aaa",Locale(lang))
-            return format.format(calendar.time)
+        val format = SimpleDateFormat("hh:mm aaa", Locale(lang))
+        return format.format(calendar.time)
 
     }
 
@@ -119,15 +118,14 @@ class WeatherDetailsActivity : AppCompatActivity() {
         var month = calendar.get(Calendar.MONTH)
         var day = calendar.get(Calendar.DAY_OF_MONTH)
         var year = calendar.get(Calendar.YEAR)
-        if(lang.equals("en")) {
+        if (lang.equals("en")) {
             return day.toString() + "/" + month + "/" + year
-        }
-        else
-        {
-            return convertToArabic(year)+"/"+convertToArabic(month)+"/"+convertToArabic(day)
+        } else {
+            return convertToArabic(year) + "/" + convertToArabic(month) + "/" + convertToArabic(day)
         }
 
     }
+
     fun convertToArabic(value: Int): String? {
         return (value.toString() + "")
             .replace("1", "١").replace("2", "٢")
@@ -136,41 +134,43 @@ class WeatherDetailsActivity : AppCompatActivity() {
             .replace("7", "٧").replace("8", "٨")
             .replace("9", "٩").replace("0", "٠")
     }
-    fun convertTimezone(weatherResponse: WeatherResponse):String{
-        var arabicTimezone=""
+
+    fun convertTimezone(weatherResponse: WeatherResponse): String {
+        var arabicTimezone = ""
         var addressList: List<Address>? = null
 
-        val geocoder= Geocoder(this, Locale(lang))
+        val geocoder = Geocoder(this, Locale(lang))
         try {
-            addressList = geocoder.getFromLocation(weatherResponse.lat,weatherResponse.lon, 1)
-        }
-        catch (e: IOException)
-        {
+            addressList = geocoder.getFromLocation(weatherResponse.lat, weatherResponse.lon, 1)
+        } catch (e: IOException) {
             e.printStackTrace()
         }
 
         val address = addressList!![0]
-        arabicTimezone=address.locality+"/"+address.adminArea
+      //  arabicTimezone = address.locality + "/" + address.adminArea
+        arabicTimezone=address.adminArea
         return arabicTimezone
     }
-    fun setUnits(unit:String)
-    {
+
+    fun setUnits(unit: String) {
         when (unit) {
             "metric" -> {
-                tempUnit="°c"
-                windSpeedUnit="m/s"
+                tempUnit = "°c"
+                windSpeedUnit = "m/s"
             }
             "imperial" -> {
                 tempUnit = "°f"
-                windSpeedUnit="m/h"
+                windSpeedUnit = "m/h"
             }
-            "standard" ->{
-                tempUnit="°k"
-                windSpeedUnit="m/s"
+            "standard" -> {
+                tempUnit = "°k"
+                windSpeedUnit = "m/s"
             }
 
         }
     }
-    fun iconLinkgetter(iconName:String):String="https://openweathermap.org/img/wn/"+iconName+"@2x.png"
+
+    fun iconLinkgetter(iconName: String): String =
+        "https://openweathermap.org/img/wn/" + iconName + "@2x.png"
 
 }

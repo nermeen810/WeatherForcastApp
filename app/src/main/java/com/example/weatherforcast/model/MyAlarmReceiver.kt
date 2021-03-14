@@ -44,20 +44,20 @@ class myAlarmReceiver : BroadcastReceiver() {
                 val localDataSource = DataSource(context.applicationContext as Application)
                 localDataSource.deleteAlarmObj(id)
             }
-         //   Toast.makeText(context, "cancel ", Toast.LENGTH_SHORT).show()
+            //   Toast.makeText(context, "cancel ", Toast.LENGTH_SHORT).show()
 
         } else {
             prefs = context.getSharedPreferences("weather", Context.MODE_PRIVATE)
             val timeZone = prefs.getString("timezone", "").toString()
-          //  val lat=prefs.getString("lat", "0").toString()
-           // val log=prefs.getString("lng","0").toString()
+            //  val lat=prefs.getString("lat", "0").toString()
+            // val log=prefs.getString("lng","0").toString()
             CoroutineScope(Dispatchers.IO).launch {
-                val  localDataSource = DataSource(context.applicationContext as Application)
+                val localDataSource = DataSource(context.applicationContext as Application)
                 val apiObj = localDataSource.getByTimezone(timeZone)
 
                 val event = intent.getStringExtra("event")
-                Log.i("key",event.toString())
-                Log.i("key",timeZone)
+                Log.i("key", event.toString())
+                Log.i("key", timeZone)
                 Log.i("key", apiObj.current.weather.get(0).description)
                 if (apiObj.current.weather.get(0).description.contains(
                         event + "",

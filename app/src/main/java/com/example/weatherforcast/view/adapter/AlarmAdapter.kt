@@ -59,7 +59,7 @@ class AlarmAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.myView.alarmType.text = alarmList[position].event
-       // holder.myView.dateTime.text =
+        // holder.myView.dateTime.text =
         //    alarmList[position].Date + " " + alarmList[position].start + R.string.to + alarmList[position].end
         holder.myView.details.text = alarmList[position].description
 
@@ -67,14 +67,15 @@ class AlarmAdapter(
             alartViewModel.onEditClick(alarmList[position])
         }
         holder.itemView.setOnLongClickListener {
-            showDialog(alarmList[position],position)
+            showDialog(alarmList[position], position)
             true
 
         }
 
 
     }
-    fun showDialog(alarm:Alarm,pos:Int) {
+
+    fun showDialog(alarm: Alarm, pos: Int) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(R.string.app_name)
 
@@ -91,16 +92,17 @@ class AlarmAdapter(
             notifyItemRemoved(pos)
             updateAlarms(alarmList)
         }
-            builder.setNeutralButton(R.string.NoMessage) { dialogInterface, which ->
+        builder.setNeutralButton(R.string.NoMessage) { dialogInterface, which ->
 
-            }
-            // Create the AlertDialog
-            val alertDialog: AlertDialog = builder.create()
-            // Set other dialog properties
-            alertDialog.setCancelable(false)
-            alertDialog.show()
+        }
+        // Create the AlertDialog
+        val alertDialog: AlertDialog = builder.create()
+        // Set other dialog properties
+        alertDialog.setCancelable(false)
+        alertDialog.show()
 
     }
+
     private fun cancelAlarm(id: Int, context: Context) {
         notificationManager?.cancel(id)
         Log.i("alarmID", "" + id)
@@ -109,6 +111,7 @@ class AlarmAdapter(
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(pendingIntent)
     }
+
     fun getItemAt(pos: Int) = alarmList.get(pos)
     override fun getItemCount() = alarmList.size
 

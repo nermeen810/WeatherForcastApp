@@ -11,7 +11,6 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.weatherforcast.R
 import com.example.weatherforcast.databinding.ActivityHomeBinding
 import com.example.weatherforcast.databinding.ActivityWeatherDetailsBinding
-import com.example.weatherforcast.view.adapter.ViewPagerAdaptor
 import com.example.weatherforcast.view.fragment.*
 import com.example.weatherforcast.viewModel.CurrentViewModel
 import com.google.android.material.tabs.TabLayout
@@ -20,13 +19,10 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
 
     lateinit private var currentFragment: CurrentFragment
-    lateinit  private var sevenDaysFragment: SevenDaysFragment
-    lateinit  private var favoriteFragment: FavoriteFragment
-    lateinit  private var settingsFragment: SettingFragment
+    lateinit private var favoriteFragment: FavoriteFragment
+    lateinit private var settingsFragment: SettingFragment
     lateinit private var alarmFragment: AlarmFragment
-    lateinit var binding:ActivityHomeBinding
-
-
+    lateinit var binding: ActivityHomeBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,33 +31,31 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        currentFragment =CurrentFragment()
+        currentFragment = CurrentFragment()
         favoriteFragment = FavoriteFragment()
-        settingsFragment =SettingFragment()
-        alarmFragment= AlarmFragment()
+        settingsFragment = SettingFragment()
+        alarmFragment = AlarmFragment()
 
         makeCurrentFragment(currentFragment)
 
-         binding.bottomNavigation.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.currentFragment ->makeCurrentFragment(currentFragment)
-                R.id.favouirateFragment ->makeCurrentFragment(favoriteFragment)
-                R.id.settingsFragment ->makeCurrentFragment(settingsFragment)
-                R.id.alarmFragment->makeCurrentFragment(alarmFragment)
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.currentFragment -> makeCurrentFragment(currentFragment)
+                R.id.favouirateFragment -> makeCurrentFragment(favoriteFragment)
+                R.id.settingsFragment -> makeCurrentFragment(settingsFragment)
+                R.id.alarmFragment -> makeCurrentFragment(alarmFragment)
 
             }
             true
         }
 
 
-
-
     }
 
 
-    private fun makeCurrentFragment(fragment: Fragment)=
+    private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.nav_host_fragment,fragment)
+            replace(R.id.nav_host_fragment, fragment)
             commit()
         }
 

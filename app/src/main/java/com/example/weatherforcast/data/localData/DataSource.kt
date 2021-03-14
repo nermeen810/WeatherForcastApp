@@ -7,7 +7,8 @@ import com.example.weatherforcast.model.WeatherResponse
 
 class DataSource {
     var weatherDao: WeatherDao
-     constructor(application: Application) {
+
+    constructor(application: Application) {
         weatherDao = WeatherDataBase.getDatabase(application).weatherDao()
     }
 
@@ -15,26 +16,32 @@ class DataSource {
         return weatherDao.getAll()
     }
 
-    fun getAllData(): List<WeatherResponse>{
+    fun getAllData(): List<WeatherResponse> {
         return weatherDao.getAllData()
     }
-    fun getWeatherByLatLon(lat:String, lng:String): LiveData<WeatherResponse> {
-        return weatherDao.getWeatherByLatLong(lat,lng)
+
+    fun getWeatherByLatLon(lat: String, lng: String): LiveData<WeatherResponse> {
+        return weatherDao.getWeatherByLatLong(lat, lng)
     }
-    fun getWeatherByTimezone(timezone:String?): LiveData<WeatherResponse> {
+
+    fun getWeatherByTimezone(timezone: String?): LiveData<WeatherResponse> {
         return weatherDao.getWeatherByTimezone(timezone)
     }
-    fun getByTimezone(timezone:String?): WeatherResponse{
+
+    fun getByTimezone(timezone: String?): WeatherResponse {
         return weatherDao.getByTimezone(timezone)
     }
-     fun deletByTimezone(timezone: String?) {
-     weatherDao.deleteByTimeZone(timezone)
+
+    fun deletByTimezone(timezone: String?) {
+        weatherDao.deleteByTimeZone(timezone)
 
     }
+
     suspend fun insert(weather: WeatherResponse?) {
         weather?.let { weatherDao.insert(it) }
     }
-     fun deleteAlarmObj(id: Int) {
+
+    fun deleteAlarmObj(id: Int) {
         weatherDao.deleteAlarmObj(id)
     }
 

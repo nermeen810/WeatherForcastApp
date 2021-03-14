@@ -26,16 +26,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var mapViewModel: MapViewModel
     private lateinit var mMap: GoogleMap
     var userLocationMarker: Marker? = null
-   lateinit var latitude:String
-    lateinit var longitude:String
+    lateinit var latitude: String
+    lateinit var longitude: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
-        val sharedPref = application.getSharedPreferences("weather" , Context.MODE_PRIVATE)
-         latitude= sharedPref.getString("lat","0").toString()
-         longitude= sharedPref.getString("lng","0").toString()
-         mapViewModel = ViewModelProvider(
+        val sharedPref = application.getSharedPreferences("weather", Context.MODE_PRIVATE)
+        latitude = sharedPref.getString("lat", "0").toString()
+        longitude = sharedPref.getString("lng", "0").toString()
+        mapViewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(
@@ -44,7 +44,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val addFlaot1_btn = this.findViewById(R.id.add_flout_btn) as FloatingActionButton
         addFlaot1_btn.setOnClickListener(View.OnClickListener {
-            mapViewModel.setWeatherData(latitude,longitude)
+            mapViewModel.setWeatherData(latitude, longitude)
             finish()
         })
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -65,7 +65,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val current = LatLng(latitude?.toDouble()!!, longitude?.toDouble()!!)
-        var select=current
+        var select = current
         val markerOptions = MarkerOptions()
         markerOptions.position(current)
         markerOptions.title("marker in select")
@@ -74,16 +74,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(current))
 
         mMap.setOnMapClickListener { point ->
-            Toast.makeText(
-                this,
-                point.latitude.toString() + ", " + point.longitude,
-                Toast.LENGTH_SHORT
-            ).show()
-            latitude=point.latitude.toString()
-            longitude=point.longitude.toString()
+//            Toast.makeText(
+//                this,
+//                point.latitude.toString() + ", " + point.longitude,
+//                Toast.LENGTH_SHORT
+//            ).show()
+            latitude = point.latitude.toString()
+            longitude = point.longitude.toString()
             select = LatLng(point.latitude, point.longitude)
-            userLocationMarker!!.position=select
-            userLocationMarker!!.rotation= maxOf(0.5f,0.5f)
+            userLocationMarker!!.position = select
+            userLocationMarker!!.rotation = maxOf(0.5f, 0.5f)
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(current, 20f))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(select))
         }

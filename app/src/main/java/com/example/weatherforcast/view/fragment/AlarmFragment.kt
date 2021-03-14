@@ -53,9 +53,9 @@ class AlarmFragment : Fragment() {
         ).get(
             AlarmViewModel::class.java
         )
-        alertAdabter = AlarmAdapter(arrayListOf(), viewModel,requireContext())
+        alertAdabter = AlarmAdapter(arrayListOf(), viewModel, requireContext())
 
-        viewModel.getNavigate().observe(this,{
+        viewModel.getNavigate().observe(this, {
             isedit = true
             showDialog(it)
         })
@@ -65,16 +65,22 @@ class AlarmFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initUI()//init recylcer view
+        initUI()
         getAlarmData(viewModel)
-       // rvSwipeListener()
         binding.addBtn.setOnClickListener { v ->
             var alarmObj = Alarm("", "", "", "", true, "")
             showDialog(alarmObj)
         }
     }
+
     private fun getAlarmData(viewModel: AlarmViewModel) {
         viewModel.getAlarmList().observe(this) {
+
+            if (it.isEmpty()) {
+                binding.animationView.visibility = View.VISIBLE
+            } else {
+                binding.animationView.visibility = View.GONE
+            }
             alertAdabter.updateAlarms(it)
 
         }
@@ -280,70 +286,6 @@ class AlarmFragment : Fragment() {
             return true
         return false
     }
-
-    private fun rvSwipeListener() {
-        val itemTouchHelperCallback = object :
-            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val item: Alarm = alertAdabter.getItemAt(position)
-                alertAdabter.alarmList.removeAt(position)
-                alertAdabter.notifyItemRemoved(position);
-                //Toast.makeText(applicationContext, "deleted", Toast.LENGTH_SHORT).show()
-                Snackbar.make(binding.alarmList, "deleted", Snackbar.LENGTH_SHORT).apply {
-                    setAction("UNDO") {
-                        alertAdabter.alarmList.add(item)
-                        alertAdabter.notifyItemInserted(position);
-                    }
-                    addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
-                        override fun onShown(transientBottomBar: Snackbar?) {
-                            super.onShown(transientBottomBar)
-                            Log.i("snack", "onShown")
-                        }
-
-                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                            super.onDismissed(transientBottomBar, event)
-                            // Snackbar closed on its own
-                            Log.i("snack", "on click")
-                            if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                                // Snackbar closed on its own
-                                Log.i("snack", "onDismissed")
-                                viewModel.deleteAlarmObj(item.id)
-                                val intent = Intent(context, myAlarmReceiver::class.java)
-                                val pendingIntent = PendingIntent.getBroadcast(
-                                    context,
-                                    item.id,
-                                    intent,
-                                    0
-                                )
-                                val alarmManager =
-                                    context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                                alarmManager.cancel(pendingIntent)
-                            }
-
-                        }
-                    })
-                    setTextColor(Color.parseColor("#FFFFFFFF"))
-                    setActionTextColor(Color.parseColor("#FFBB86FC"))
-                    setBackgroundTint(Color.parseColor("#616161"))
-                    duration.minus(1)
-                }.show()
-
-            }
-
-        }
-        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(binding.alarmList)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

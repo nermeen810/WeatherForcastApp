@@ -13,18 +13,21 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HourlyAdapter(private val hourlyList: ArrayList<Hourly>,private  val activity:Activity)  : RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>()  {
-    var lang:String
-    var unit:String
+class HourlyAdapter(private val hourlyList: ArrayList<Hourly>, private val activity: Activity) :
+    RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
+    var lang: String
+    var unit: String
     var sharedPref: SharedPreferences
-    lateinit var tempUnit:String
+    lateinit var tempUnit: String
+
     init {
         sharedPref = activity.getSharedPreferences("weather", Context.MODE_PRIVATE)
-        lang=sharedPref.getString("lang","en").toString()
-        unit=sharedPref.getString("units","metric").toString()
+        lang = sharedPref.getString("lang", "en").toString()
+        unit = sharedPref.getString("units", "metric").toString()
         setUnits(unit)
 
     }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -38,33 +41,38 @@ class HourlyAdapter(private val hourlyList: ArrayList<Hourly>,private  val activ
             )
         )
     }
+
     fun updateHours(newHourlyList: List<Hourly>) {
         hourlyList.clear()
         hourlyList.addAll(newHourlyList)
         notifyDataSetChanged()
     }
+
     override fun getItemCount(): Int {
-       return hourlyList.size
+        return hourlyList.size
     }
 
     override fun onBindViewHolder(holder: HourlyAdapter.HourlyViewHolder, position: Int) {
-        if(lang.equals("en")) {
+        if (lang.equals("en")) {
             holder.binding.dailyHour.text = timeFormat(hourlyList[position].dt.toInt())
-            holder.binding.dailyTemb.text = (hourlyList[position].temp.toInt()).toString() + tempUnit
-        }
-        else{
+            holder.binding.dailyTemb.text =
+                (hourlyList[position].temp.toInt()).toString() + tempUnit
+        } else {
             holder.binding.dailyHour.text = timeFormat(hourlyList[position].dt.toInt())
-            holder.binding.dailyTemb.text = convertToArabic((hourlyList[position].temp.toInt()))+ tempUnit
+            holder.binding.dailyTemb.text =
+                convertToArabic((hourlyList[position].temp.toInt())) + tempUnit
         }
-        Picasso.get().load(iconLinkgetter(hourlyList[position].weather.get(0).icon)).into(holder.binding.dailyImg)
+        Picasso.get().load(iconLinkgetter(hourlyList[position].weather.get(0).icon))
+            .into(holder.binding.dailyImg)
 
         // holder.binding.dailyImg.setImageResource(hourlyList[position].)
     }
-    private fun timeFormat(millisSeconds:Int ): String {
+
+    private fun timeFormat(millisSeconds: Int): String {
         val calendar = Calendar.getInstance()
         calendar.setTimeInMillis((millisSeconds * 1000).toLong())
-            val format = SimpleDateFormat("hh:mm aaa",Locale(lang.toString()))
-            return format.format(calendar.time)
+        val format = SimpleDateFormat("hh:mm aaa", Locale(lang.toString()))
+        return format.format(calendar.time)
 
     }
 
@@ -76,22 +84,25 @@ class HourlyAdapter(private val hourlyList: ArrayList<Hourly>,private  val activ
             .replace("7", "٧").replace("8", "٨")
             .replace("9", "٩").replace("0", "٠")
     }
-    fun setUnits(unit:String)
-    {
+
+    fun setUnits(unit: String) {
         when (unit) {
             "metric" -> {
-                tempUnit="°c"
+                tempUnit = "°c"
             }
             "imperial" -> {
                 tempUnit = "°f"
             }
-            "standard" ->{
-                tempUnit="°k"
+            "standard" -> {
+                tempUnit = "°k"
             }
 
         }
     }
-    fun iconLinkgetter(iconName:String):String="https://openweathermap.org/img/wn/"+iconName+"@2x.png"
+
+    fun iconLinkgetter(iconName: String): String =
+        "https://openweathermap.org/img/wn/" + iconName + "@2x.png"
+
     inner class HourlyViewHolder constructor(val binding: HoursItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

@@ -9,8 +9,21 @@
     tools:context=".view.fragment.SettingFragment">
 
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/Settings"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+       />
 
-       <TextView
+    <TextView
            android:id="@+id/lang_txt"
            android:layout_width="wrap_content"
            android:layout_marginTop="40dp"
@@ -27,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:padding="15dp"
+        android:padding="5dp"
         >
 
 
@@ -36,11 +49,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/yellow"
+            android:buttonTint="@color/white"
             android:text="@string/arabic" />
 
         <RadioButton
             android:id="@+id/English_rd_btn"
             android:layout_width="wrap_content"
+            android:buttonTint="@color/white"
             android:layout_height="wrap_content"
             android:textColor="@color/yellow"
             android:text="@string/english" />
@@ -52,6 +67,7 @@
             android:id="@+id/temp_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/white"
             android:textColor="@color/white"
             android:clickable="true"
             android:textSize="18dp"
@@ -66,11 +82,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:padding="15dp">
+            android:padding="5dp">
 
             <RadioButton
                 android:id="@+id/c_rd_btn"
                 android:layout_width="wrap_content"
+                android:buttonTint="@color/white"
                 android:textColor="@color/yellow"
                 android:layout_height="wrap_content"
                 android:text="@string/celsius" />
@@ -78,6 +95,7 @@
             <RadioButton
                 android:id="@+id/k_rd_btn"
                 android:layout_width="wrap_content"
+                android:buttonTint="@color/white"
                 android:textColor="@color/yellow"
                 android:layout_height="wrap_content"
                 android:text="@string/kelvin" />
@@ -86,6 +104,7 @@
                 android:id="@+id/f_rd_btn"
                 android:layout_width="wrap_content"
                 android:textColor="@color/yellow"
+                android:buttonTint="@color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/fahrenheit" />
 

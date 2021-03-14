@@ -7,19 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.FavoriteFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dailyRecycle"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/favorite_item" />
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/dailyRecycle"-->
 <!--        android:layout_width="415dp"-->
 <!--        android:layout_height="648dp"-->
@@ -37,20 +25,60 @@
 
 <!--    </androidx.recyclerview.widget.RecyclerView>-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_flout_btn"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="25dp"
-        android:src="@drawable/ic_baseline_add_location_alt_24"
-        app:backgroundTint="@color/white"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/Favorite"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.979" />
+        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dailyRecycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/favorite_item" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_flout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|right"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="21dp"
+            android:src="@drawable/ic_baseline_add_location_alt_24"
+            app:backgroundTint="@color/white"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </RelativeLayout>
     <!--    addBtn-->
 </androidx.constraintlayout.widget.ConstraintLayout>

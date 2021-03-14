@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
-    <string name="dialogMessage">Are you sure delete this location ? </string>
+    <string name="dialogMessage">Are you sure delete this item ? </string>
     <string name="yesMessage">Yes</string>
     <string name="NoMessage">No</string>
     <string name="lang">Langauge</string>
@@ -29,9 +29,9 @@
     <string name="Settings">Settings</string>
     <string name="Alarm">Alarm</string>
     <string name="notification_title">"Event: "</string>
-    <string name="notification_body">\"Be aware there is \"</string>
+    <string name="notification_body">Be careful there is--></string>
     <string name="Events">Events</string>
-    <string name="save_add_btn">Set Alarm</string>
+    <string name="save_add_btn">Save</string>
     <string name="notification">Notification</string>
     <string name="alarmSound">Alarm</string>
     <string name="soundType">Sound Type</string>
@@ -49,6 +49,8 @@
     <string name="Wea">Wea</string>
     <string name="ery">ery</string>
     <string name="th">th</string>
+    <string name="cancel">Cancel</string>
+    <string name="timeZero">00:00</string>
     <string-array name="event_options">
         <item>Rain</item>
         <item>snow</item>

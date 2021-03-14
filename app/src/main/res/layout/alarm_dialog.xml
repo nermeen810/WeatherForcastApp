@@ -9,17 +9,7 @@
     app:cardElevation="10dp"
     android:focusableInTouchMode="false"
     app:cardUseCompatPadding="true">
-    <ImageView
-        android:id="@+id/closeBtn"
-        android:layout_width="35dp"
-        android:src="@drawable/ic_baseline_close_24"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="15dp"
-        android:layout_gravity="end"
-        android:elevation="10dp"
-         />
+
 
     <LinearLayout
         android:id="@+id/my_layout"
@@ -39,12 +29,9 @@
                 android:id="@+id/Describtion_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/description"
-                android:layout_marginTop="10dp"
+                android:layout_margin="15dp"
                 android:background="@color/white"
+                android:hint="@string/description"
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textSize="17sp"></EditText>
@@ -55,10 +42,11 @@
             android:id="@+id/Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:textColor="@color/black"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="@string/Date" />
+            android:text="@string/Date"
+            android:textColor="@color/black" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputdate"
             android:layout_width="match_parent"
@@ -71,10 +59,11 @@
                 android:id="@+id/calender_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_baseline_today_24"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:hint="@string/dd_mm_yy"
-                android:textSize="17sp"/>
+                android:textSize="17sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,23 +72,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <LinearLayout
                 android:id="@+id/firstRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:weightSum="2">
 
                 <TextView
                     android:id="@+id/fromTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:textColor="@color/black"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:text="@string/From" />
+                    android:text="@string/From"
+                    android:textColor="@color/black" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputfrom"
                     android:layout_width="match_parent"
@@ -115,34 +106,36 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:drawableRight="@drawable/ic_baseline_access_alarm_24"
-                        android:maxLines="1"
-                        android:hint="00:00"
+                        android:hint="@string/timeZero"
                         android:inputType="time"
-                        android:textSize="17sp"/>
+                        android:maxLines="1"
+                        android:textSize="17sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/secondRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:weightSum="2">
 
                 <TextView
                     android:id="@+id/toTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="@string/to"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Describtion_tv" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputto"
                     android:layout_width="match_parent"
@@ -158,18 +151,16 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:drawableRight="@drawable/ic_baseline_access_alarm_24"
-                        android:maxLines="1"
-                        android:hint="00:00"
+                        android:hint="@string/timeZero"
                         android:inputType="time"
-                        android:textSize="17sp"/>
+                        android:maxLines="1"
+                        android:textSize="17sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
             </LinearLayout>
         </LinearLayout>
-
-
 
 
         <!--LinearLayout
@@ -195,27 +186,27 @@
         </LinearLayout-->
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:weightSum="2"
+            android:orientation="horizontal"
 
-            android:orientation="horizontal">
+            android:weightSum="2">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:textColor="@color/black"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/Events" />
+                    android:text="@string/Events"
+                    android:textColor="@color/black" />
 
                 <Spinner
                     android:id="@+id/event_spinner"
@@ -231,14 +222,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/soundType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
-                    android:text="@string/soundType" />
+                    android:text="@string/soundType"
+                    android:textColor="@color/black" />
+
                 <Spinner
                     android:id="@+id/sound_spinner"
                     android:layout_width="wrap_content"
@@ -249,18 +242,33 @@
             </LinearLayout>
 
         </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
         <Button
             android:id="@+id/add_alarm_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:textColor="@color/white"
+            android:layout_marginStart="60dp"
             android:layout_marginBottom="21dp"
             android:background="@drawable/roundshape"
-            android:layout_gravity="center"
-            android:text="@string/save_add_btn" />
-
+            android:text="@string/save_add_btn"
+            android:textColor="@color/white" />
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/roundshape"
+        android:text="@string/cancel"
+        android:textColor="@color/white" />
+</LinearLayout>
 
     </LinearLayout>
 

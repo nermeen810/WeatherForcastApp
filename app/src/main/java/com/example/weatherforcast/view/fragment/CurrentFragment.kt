@@ -76,11 +76,11 @@ class CurrentFragment : Fragment() {
         setLocale(lang)
         setUnits(unit)
         getLatestLocation()
-        Toast.makeText(
-            context,
-            "" + sharedPref.getString("lat", "0") + "," + sharedPref.getString("lng", "0"),
-            Toast.LENGTH_SHORT
-        ).show()
+//        Toast.makeText(
+//            context,
+//            "" + sharedPref.getString("lat", "0") + "," + sharedPref.getString("lng", "0"),
+//            Toast.LENGTH_SHORT
+//        ).show()
 
         // editor.putBoolean("isFirstTimeLaunch", true)
         editor.commit()

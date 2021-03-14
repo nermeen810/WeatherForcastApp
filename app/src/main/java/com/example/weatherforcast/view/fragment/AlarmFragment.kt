@@ -53,7 +53,7 @@ class AlarmFragment : Fragment() {
         ).get(
             AlarmViewModel::class.java
         )
-        alertAdabter = AlarmAdapter(arrayListOf(), viewModel, activity?.applicationContext!!)
+        alertAdabter = AlarmAdapter(arrayListOf(), viewModel,requireContext())
 
         viewModel.getNavigate().observe(this,{
             isedit = true
@@ -67,7 +67,7 @@ class AlarmFragment : Fragment() {
 
         initUI()//init recylcer view
         getAlarmData(viewModel)
-        rvSwipeListener()
+       // rvSwipeListener()
         binding.addBtn.setOnClickListener { v ->
             var alarmObj = Alarm("", "", "", "", true, "")
             showDialog(alarmObj)

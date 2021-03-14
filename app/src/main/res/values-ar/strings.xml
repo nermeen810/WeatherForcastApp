@@ -40,8 +40,8 @@
     <string name="alarm_toolstip"> اضافه تنبيه</string>
     <string name="description">الوصف</string>
     <string name="dd_mm_yy">يوم/شهر/سنه</string>
-    <string name="to">من</string>
-    <string name="From">الى</string>
+    <string name="to"> الى</string>
+    <string name="From">من</string>
     <string name="Date">التاريخ</string>
     <string name="empty_date">لا يوجد تاريخ </string>
     <string name="no_alarms">No Alarms</string>
@@ -49,6 +49,8 @@
     <string name="Wea">Wea</string>
     <string name="ery">ery</string>
     <string name="th">th</string>
+    <string name="cancel">الغاء</string>
+    <string name="timeZero">٠٠:٠٠</string>
     <string-array name="event_options">
         <item>مطر</item>
         <item>ثلج</item>
@@ -56,6 +58,7 @@
         <item>عاصفه</item>
         <item>سحب</item>
         <item>رياح</item>
+        <item>صافية</item>
     </string-array>
     <string-array name="alarm_type">
         <item>اشعارات</item>

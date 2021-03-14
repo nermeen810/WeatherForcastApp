@@ -16,28 +16,12 @@
             android:layout_width="387dp"
             android:layout_height="75dp">
 
-
-            <TextView
-                android:id="@+id/date_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.444"
-                app:layout_constraintStart_toEndOf="@+id/details"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.803"
-                tools:text="10.9.2012 5:49to6:49" />
-
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="31dp"
                 android:layout_height="49dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/alarm"
+                android:src="@drawable/ic_alam_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

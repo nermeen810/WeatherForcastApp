@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginEnd="10dp"
-    android:layout_marginRight="3dp"
-    android:layout_marginLeft="3dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginLeft="4dp"
     android:layout_marginTop="7dp"
     android:layout_marginBottom="7dp"
     android:layout_marginStart="5dp">
@@ -17,8 +17,8 @@
         app:cardCornerRadius="7dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_width="387dp"
+            android:layout_height="75dp"
             android:background="@color/light_purple"
             android:orientation="horizontal">
 

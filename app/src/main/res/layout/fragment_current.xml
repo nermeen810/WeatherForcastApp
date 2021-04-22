@@ -27,12 +27,12 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:text="Zagazig"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Zagazig" />
+                tools:text="" />
 
             <TextView
                 android:id="@+id/main_view_date"
@@ -40,13 +40,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="Fri, Nov 03, 2017"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/main_view_country"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/main_view_country"
-                tools:text="Fri, Nov 03, 2017" />
+                tools:text="" />
 
 
             <TextView
@@ -55,12 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:includeFontPadding="false"
-                android:text="19C°"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintStart_toStartOf="@+id/main_view_country"
                 app:layout_constraintTop_toBottomOf="@+id/main_view_country"
-                tools:text="19°C" />
+                tools:text="" />
 
             <TextView
                 android:id="@+id/main_description"
@@ -70,12 +70,12 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="20dp"
                 android:includeFontPadding="false"
-                android:text="Mostly cloudy"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/main_temperature"
                 app:layout_constraintTop_toBottomOf="@+id/main_temperature"
-                tools:text="Mostly cloudy" />
+                tools:text="" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view"
@@ -141,7 +141,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -186,7 +186,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -232,7 +232,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -277,7 +277,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -322,7 +322,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -367,7 +367,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:layout_marginBottom="17dp"
-                        android:text="75%" />
+                        android:text="" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

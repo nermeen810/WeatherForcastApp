@@ -142,6 +142,7 @@ class CurrentFragment : Fragment() {
         it.alerts?.let {
             notifyUser(it)
         }
+
         editor.putString("timezone", it.timezone)
         editor.commit()
         if (lang.equals("en")) {

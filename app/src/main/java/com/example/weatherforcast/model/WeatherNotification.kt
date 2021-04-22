@@ -63,7 +63,7 @@ class WeatherNotification(base: Context?) : ContextWrapper(base) {
             return NotificationCompat.Builder(
                 getApplicationContext(), ANDROID_CHANNEL_ID
             )
-                .setSmallIcon(R.drawable.ic_baseline_wb_sunny_24)
+                .setSmallIcon(R.drawable.alarm)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentTitle(title)
                 .setContentText(body)
@@ -75,7 +75,7 @@ class WeatherNotification(base: Context?) : ContextWrapper(base) {
             return NotificationCompat.Builder(
                 getApplicationContext(), ANDROID_CHANNEL_ID
             )
-                .setSmallIcon(R.drawable.ic_baseline_wb_sunny_24)
+                .setSmallIcon(R.drawable.alarm)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
                 .setContentTitle(title)
                 .setColor(Color.parseColor("#504FD3"))

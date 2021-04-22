@@ -11,9 +11,9 @@
     <string name="WndSpeed">Wind Speed Unit</string>
     <string name="arabic">Arabic</string>
     <string name="english">English</string>
-    <string name="kelvin">temp(°k)-windSpeed(meter/sec)</string>
-    <string name="celsius">temp(°c)-windSpeed(meter/sec)</string>
-    <string name="fahrenheit">temp(°f)-windSpeed(miles/hour)</string>
+    <string name="kelvin">temp(°k),windSpeed(meter/sec)</string>
+    <string name="celsius">temp(°c),windSpeed(meter/sec)</string>
+    <string name="fahrenheit">temp(°f),windSpeed(miles/hour)</string>
     <string name="mh">miles/hour</string>
     <string name="ms">meter/sec</string>
     <string name="Humidity">Humidity</string>

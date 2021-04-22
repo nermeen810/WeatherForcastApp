@@ -25,7 +25,7 @@ import java.io.IOException
 import java.util.*
 
 class FavoriteAdapter(
-    private val favoriteList: ArrayList<WeatherResponse>,
+    private val favoriteList: ArrayList<WeatherResponse> ,
     private val context: Context?,
     private var favoriteViewModel: FavoriteViewModel
 ) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
@@ -76,15 +76,15 @@ class FavoriteAdapter(
         builder.setMessage(R.string.dialogMessage)
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
+        builder.setNegativeButton(R.string.NoMessage) { dialogInterface, which ->
+
+        }
+
         builder.setPositiveButton(R.string.yesMessage) { dialogInterface, which ->
             favoriteViewModel.deletWeatherData(favoriteList[position].timezone)
             favoriteList.remove(favoriteList[position])
             notifyItemRemoved(position)
             updateFavorite(favoriteList)
-        }
-
-        builder.setNeutralButton(R.string.NoMessage) { dialogInterface, which ->
-
         }
         // Create the AlertDialog
         val alertDialog: AlertDialog = builder.create()

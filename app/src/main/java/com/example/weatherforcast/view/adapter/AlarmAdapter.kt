@@ -82,6 +82,9 @@ class AlarmAdapter(
         builder.setMessage(R.string.dialogMessage)
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
+        builder.setNegativeButton(R.string.NoMessage) { dialogInterface, which ->
+
+        }
         builder.setPositiveButton(R.string.yesMessage) { dialogInterface, which ->
             cancelAlarm(alarm.id, context)
             CoroutineScope(Dispatchers.IO).launch {
@@ -91,9 +94,6 @@ class AlarmAdapter(
             alarmList.remove(alarm)
             notifyItemRemoved(pos)
             updateAlarms(alarmList)
-        }
-        builder.setNeutralButton(R.string.NoMessage) { dialogInterface, which ->
-
         }
         // Create the AlertDialog
         val alertDialog: AlertDialog = builder.create()

@@ -57,8 +57,7 @@ class DailyAdapter(private val dailyList: ArrayList<Daily>, private val activity
         var max = dailyList[position].temp.max.toInt()
         holder.binding.descriptionTxt.text = dailyList[position].weather[0].description
         holder.binding.day.text = dayName
-        Picasso.get().load(iconLinkgetter(dailyList[position].weather.get(0).icon))
-            .into(holder.binding.imageView)
+
 
         if (lang.equals("en")) {
             holder.binding.tempTxt.text = min.toString() + tempUnit + " : " + max + tempUnit

@@ -14,7 +14,6 @@ import kotlinx.coroutines.*
 class WeatherRepository {
     var localDataSource: DataSource
     var remoteDataSource: NetworkService
-    var weatherLiveData = MutableLiveData<List<WeatherResponse>>()
     lateinit var latitude: String
     lateinit var longitude: String
     var lang: String

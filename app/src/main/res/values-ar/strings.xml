@@ -11,8 +11,8 @@
     <string name="WndSpeed">وحده سرعه الرياح</string>
     <string name="arabic">اللغه العربيه</string>
     <string name="english">اللغه الانجليزيه</string>
-    <string name="kelvin">درجه الحراره(k°)-سرعه الرياح(meter/sec)</string>
-    <string name="celsius">درجه الحراره(c°)-سرعه الرياح(meter/sec)</string>
+    <string name="kelvin">درجه الحراره(k°), سرعه الرياح(meter/sec)</string>
+    <string name="celsius">درجه الحراره(c°),سرعه الرياح(meter/sec)</string>
     <string name="fahrenheit">درجه الحراره(f°)-سرعه الرياح(miles/hour)</string>
     <string name="mh">ميل/ساعه</string>
     <string name="ms">متر/ثانيه</string>

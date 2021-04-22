@@ -36,8 +36,8 @@ class myAlarmReceiver : BroadcastReceiver() {
         Log.i("alarmID", "" + id)
         Log.i("alarmٍSound", "" + sound)
         Log.i("alarm", " " + LongEndTime + "  " + c.timeInMillis)
-        Toast.makeText(context, " " + LongEndTime + "  " + c.timeInMillis, Toast.LENGTH_SHORT)
-            .show()
+       // Toast.makeText(context, " " + LongEndTime + "  " + c.timeInMillis, Toast.LENGTH_SHORT)
+           // .show()
         if (LongEndTime < c.timeInMillis) {
             cancelAlarm(id, context)
             CoroutineScope(Dispatchers.IO).launch {

@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:id="@+id/register_card"
     app:cardCornerRadius="20dp"
-    android:background="@drawable/dialog_background"
     app:cardElevation="10dp"
     android:focusableInTouchMode="false"
     app:cardUseCompatPadding="true">
@@ -15,6 +14,7 @@
         android:id="@+id/my_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/gradiant"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/roundshape">
+            android:background="@drawable/roundshapgreen">
 
             <EditText
                 android:id="@+id/Describtion_tv"
@@ -32,6 +32,7 @@
                 android:layout_margin="15dp"
                 android:background="@color/white"
                 android:hint="@string/description"
+                android:textColor="@color/light_gray"
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textSize="17sp"></EditText>
@@ -45,7 +46,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="@string/Date"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputdate"
@@ -62,6 +63,7 @@
                 android:drawableRight="@drawable/ic_baseline_today_24"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+
                 android:hint="@string/dd_mm_yy"
                 android:textSize="17sp" />
 
@@ -89,7 +91,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="@string/From"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputfrom"
@@ -132,7 +134,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="@string/to"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Describtion_tv" />
 
@@ -206,7 +208,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/Events"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <Spinner
                     android:id="@+id/event_spinner"
@@ -215,7 +217,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="4dp"
                     android:entries="@array/event_options"
-                    android:popupBackground="@color/white" />
+                    android:popupBackground="@drawable/gradiant" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,7 +232,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/soundType"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <Spinner
                     android:id="@+id/sound_spinner"
@@ -238,7 +240,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:entries="@array/alarm_type"
-                    android:popupBackground="@color/white" />
+                    android:popupBackground="@drawable/gradiant" />
             </LinearLayout>
 
         </LinearLayout>
@@ -252,7 +254,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="55dp"
             android:layout_marginBottom="21dp"
             android:background="@drawable/roundshape"
             android:text="@string/save_add_btn"
